@@ -1,0 +1,63 @@
+@DeanFernandes.WatchListApp.API_HostAddress = https://localhost:7086
+@id=6
+GET {{DeanFernandes.WatchListApp.API_HostAddress}}/movies
+
+###
+
+POST {{DeanFernandes.WatchListApp.API_HostAddress}}/movies
+Content-Type: application/json
+
+{
+  "title": "Die Hard 3",
+  "genreId": 5
+}
+
+###
+
+DELETE {{DeanFernandes.WatchListApp.API_HostAddress}}/movies/{{id}}
+
+###
+
+GET {{DeanFernandes.WatchListApp.API_HostAddress}}/movies/{{id}}
+
+###
+
+PUT {{DeanFernandes.WatchListApp.API_HostAddress}}/movies/{{id}}
+Content-Type: application/json
+
+{
+  "title": "Die Hard 4",
+  "genreId": 5
+}
+
+###
+
+GET {{DeanFernandes.WatchListApp.API_HostAddress}}/genres
+
+###
+
+POST {{DeanFernandes.WatchListApp.API_HostAddress}}/genres
+Content-Type: application/json
+
+{
+  "name": "Horror"
+}
+
+###
+
+DELETE {{DeanFernandes.WatchListApp.API_HostAddress}}/genres/{{id}}
+
+###
+
+GET {{DeanFernandes.WatchListApp.API_HostAddress}}/genres/{{id}}
+
+###
+
+PUT {{DeanFernandes.WatchListApp.API_HostAddress}}/genres/{{id}}
+Content-Type: application/json
+
+{
+  "name": "Comedy"
+}
+
+###
