@@ -2,7 +2,11 @@ import MovieRow from "./MovieRow";
 import AddMovieRow from "./AddMovieRow";
 import "./MoviesTable.css";
 
-export default function MoviesTable() {
+export default function MoviesTable({
+  movies,
+  onAddMovie,
+  onUpdateDeleteMovie,
+}) {
   return (
     <table className="moviesTable">
       <caption>Movies</caption>
@@ -14,10 +18,14 @@ export default function MoviesTable() {
         </tr>
       </thead>
       <tbody>
-        <MovieRow watched={true}></MovieRow>
-        <MovieRow watched={false}></MovieRow>
-
-        <AddMovieRow></AddMovieRow>
+        {movies.map((movie) => (
+          <MovieRow
+            key={movie.id}
+            movie={movie}
+            onUpdateDelete={onUpdateDeleteMovie}
+          ></MovieRow>
+        ))}
+        <AddMovieRow onAdd={onAddMovie}></AddMovieRow>
       </tbody>
     </table>
   );
