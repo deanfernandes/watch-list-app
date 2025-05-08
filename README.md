@@ -1,4 +1,5 @@
 # WatchListApp
+https://trello.com/b/OklWvAD2/watch-list-app-kanban
 ## Requirements:
 * .NET SDK 6.0 or higher
   * Download: https://dotnet.microsoft.com/download
