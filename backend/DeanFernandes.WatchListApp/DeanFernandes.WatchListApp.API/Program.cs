@@ -14,6 +14,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost3000", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -108,7 +118,6 @@ app.MapGet("/genres", async (AppDbContext db) =>
     return Results.Ok(genres);
 });
 
-// GET /genres/{id}
 app.MapGet("/genres/{id}", async (int id, AppDbContext db) =>
 {
     var genre = await db.Genres.FindAsync(id);
@@ -121,7 +130,6 @@ app.MapGet("/genres/{id}", async (int id, AppDbContext db) =>
     });
 });
 
-// POST /genres
 app.MapPost("/genres", async (CreateUpdateGenreDto dto, AppDbContext db) =>
 {
     var genre = new Genre { Name = dto.Name };
@@ -137,7 +145,6 @@ app.MapPost("/genres", async (CreateUpdateGenreDto dto, AppDbContext db) =>
     return Results.Created($"/genres/{genre.Id}", resultDto);
 });
 
-// PUT /genres/{id}
 app.MapPut("/genres/{id}", async (int id, CreateUpdateGenreDto dto, AppDbContext db) =>
 {
     var genre = await db.Genres.FindAsync(id);
@@ -149,7 +156,6 @@ app.MapPut("/genres/{id}", async (int id, CreateUpdateGenreDto dto, AppDbContext
     return Results.NoContent();
 });
 
-// DELETE /genres/{id}
 app.MapDelete("/genres/{id}", async (int id, AppDbContext db) =>
 {
     var genre = await db.Genres.FindAsync(id);
@@ -193,5 +199,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowLocalhost3000");
 
 app.Run();
