@@ -5,11 +5,14 @@
         public int Id { get; set; }
         public string Title { get; set; }
         public int GenreId { get; set; }
+
+        public bool Watched { get; set; }
     }
 
     public class CreateUpdateMovieDto
     {
         public string Title { get; set; }
         public int GenreId { get; set; }
+        public bool Watched { get; set; }
     }
 }

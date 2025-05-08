@@ -41,7 +41,8 @@ app.MapGet("/movies", async (AppDbContext db) =>
         {
             Id = m.Id,
             Title = m.Title,
-            GenreId = m.GenreId
+            GenreId = m.GenreId,
+            Watched = m.Watched
         })
         .ToListAsync();
 
@@ -57,7 +58,8 @@ app.MapGet("/movies/{id}", async (int id, AppDbContext db) =>
     {
         Id = movie.Id,
         Title = movie.Title,
-        GenreId = movie.GenreId
+        GenreId = movie.GenreId,
+        Watched = movie.Watched
     });
 });
 
@@ -76,7 +78,8 @@ app.MapPost("/movies", async (CreateUpdateMovieDto dto, AppDbContext db) =>
     {
         Id = movie.Id,
         Title = movie.Title,
-        GenreId = movie.GenreId
+        GenreId = movie.GenreId,
+        Watched = movie.Watched
     };
 
     return Results.Created($"/movies/{movie.Id}", resultDto);
@@ -89,6 +92,7 @@ app.MapPut("/movies/{id}", async (int id, CreateUpdateMovieDto dto, AppDbContext
 
     movie.Title = dto.Title;
     movie.GenreId = dto.GenreId;
+    movie.Watched = dto.Watched;
     await db.SaveChangesAsync();
 
     return Results.NoContent();
