@@ -1,0 +1,48 @@
+header {
+  background-color: yellow;
+  padding: 10px 0 10px 0;
+}
+
+header > h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+footer {
+  background-color: yellow;
+}
+
+footer > p {
+  text-align: center;
+}
+
+footer > p::before {
+  content: "©";
+}
+
+table {
+  margin-top: 25px;
+}
+
+table > caption {
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.wrapper {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+}
