@@ -7,5 +7,7 @@
 
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
+
+        public bool Watched { get; set; } = false;
     }
 }
