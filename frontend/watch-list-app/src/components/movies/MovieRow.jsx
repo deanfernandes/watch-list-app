@@ -9,7 +9,7 @@ export default function MovieRow({ movie, onUpdateDelete }) {
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(movie.title);
   const [genreId, setGenreId] = useState(movie.genreId);
-  const [watched, setWatched] = useState(false);
+  const [watched, setWatched] = useState(movie.watched);
 
   function deleteMovie(id) {
     fetch(API_URL + "/movies/" + id, {
