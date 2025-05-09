@@ -1,11 +1,10 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html,
 body {
-  box-sizing: border-box;
-  margin: 0;
   height: 100%;
 }
 

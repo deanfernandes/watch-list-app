@@ -42,54 +42,58 @@ export default function MovieRow({ movie, onUpdateDelete }) {
     });
   }
 
-  return edit ? (
-    <tr>
-      <td>
-        <input
-          type="text"
-          placeholder=""
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        ></input>
-      </td>
-      <td>
-        <select value={genreId} onChange={(e) => setGenreId(e.target.value)}>
-          {genres.map((genre) => (
-            <option key={genre.id} value={genre.id}>
-              {genre.name}
-            </option>
-          ))}
-        </select>
-      </td>
-      <td>
-        <input type="checkbox" value="false"></input>
-      </td>
-      <td>
-        <button onClick={() => updateMovie(movie.id)}>Save</button>
-      </td>
-      <td>
-        <button
-          onClick={() => {
-            setEdit(false);
-            setTitle(movie.title);
-            setGenreId(movie.genreId);
-          }}
-        >
-          Cancel
-        </button>
-      </td>
-    </tr>
+  return genre ? (
+    edit ? (
+      <tr>
+        <td>
+          <input
+            type="text"
+            placeholder=""
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          ></input>
+        </td>
+        <td>
+          <select value={genreId} onChange={(e) => setGenreId(e.target.value)}>
+            {genres.map((genre) => (
+              <option key={genre.id} value={genre.id}>
+                {genre.name}
+              </option>
+            ))}
+          </select>
+        </td>
+        <td>
+          <input type="checkbox" value="false"></input>
+        </td>
+        <td>
+          <button onClick={() => updateMovie(movie.id)}>Save</button>
+        </td>
+        <td>
+          <button
+            onClick={() => {
+              setEdit(false);
+              setTitle(movie.title);
+              setGenreId(movie.genreId);
+            }}
+          >
+            Cancel
+          </button>
+        </td>
+      </tr>
+    ) : (
+      <tr>
+        <td>{movie.title}</td>
+        <td>{genre.name}</td>
+        <td style={{ textAlign: "center" }}>{movie.watched ? "✔️" : "❌"}</td>
+        <td>
+          <button onClick={() => setEdit(true)}>Edit</button>
+        </td>
+        <td>
+          <button onClick={() => deleteMovie(movie.id)}>Delete</button>
+        </td>
+      </tr>
+    )
   ) : (
-    <tr>
-      <td>{movie.title}</td>
-      <td>{genre.name}</td>
-      <td style={{ textAlign: "center" }}>❌</td>
-      <td>
-        <button onClick={() => setEdit(true)}>Edit</button>
-      </td>
-      <td>
-        <button onClick={() => deleteMovie(movie.id)}>Delete</button>
-      </td>
-    </tr>
+    <p>Loading...</p>
   );
 }
