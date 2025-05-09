@@ -47,16 +47,20 @@ export default function MovieRow({ movie, onUpdateDelete }) {
   return genre ? (
     edit ? (
       <tr>
-        <td>
+        <td className="border">
           <input
             type="text"
-            placeholder=""
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="form-control"
           ></input>
         </td>
-        <td>
-          <select value={genreId} onChange={(e) => setGenreId(e.target.value)}>
+        <td className="border">
+          <select
+            value={genreId}
+            onChange={(e) => setGenreId(e.target.value)}
+            className="form-select"
+          >
             {genres.map((genre) => (
               <option key={genre.id} value={genre.id}>
                 {genre.name}
@@ -64,15 +68,22 @@ export default function MovieRow({ movie, onUpdateDelete }) {
             ))}
           </select>
         </td>
-        <td>
+        <td className="center border">
           <input
             type="checkbox"
             checked={watched}
             onChange={(e) => setWatched(e.target.checked)}
+            className="form-check-input"
           ></input>
         </td>
         <td>
-          <button onClick={() => updateMovie(movie.id)}>Save</button>
+          <button
+            onClick={() => updateMovie(movie.id)}
+            type="button"
+            className="btn btn-primary"
+          >
+            Save
+          </button>
         </td>
         <td>
           <button
@@ -82,6 +93,8 @@ export default function MovieRow({ movie, onUpdateDelete }) {
               setGenreId(movie.genreId);
               setWatched(movie.watched);
             }}
+            type="button"
+            className="btn btn-secondary"
           >
             Cancel
           </button>
@@ -89,14 +102,28 @@ export default function MovieRow({ movie, onUpdateDelete }) {
       </tr>
     ) : (
       <tr>
-        <td>{movie.title}</td>
-        <td>{genre.name}</td>
-        <td style={{ textAlign: "center" }}>{movie.watched ? "✔️" : "❌"}</td>
-        <td>
-          <button onClick={() => setEdit(true)}>Edit</button>
+        <td className="border">{movie.title}</td>
+        <td className="border">{genre.name}</td>
+        <td style={{ textAlign: "center" }} className="border">
+          {movie.watched ? "✔️" : "❌"}
         </td>
         <td>
-          <button onClick={() => deleteMovie(movie.id)}>Delete</button>
+          <button
+            onClick={() => setEdit(true)}
+            type="button"
+            className="btn btn-primary"
+          >
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            onClick={() => deleteMovie(movie.id)}
+            type="button"
+            className="btn btn-danger"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     )

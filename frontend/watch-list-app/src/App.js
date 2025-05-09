@@ -1,4 +1,5 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 import MoviesTable from "./components/movies/MoviesTable";
 import Footer from "./components/Footer";

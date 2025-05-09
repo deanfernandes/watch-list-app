@@ -43,10 +43,15 @@ export default function AddMovieRow({ onAdd }) {
           placeholder="Title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className="form-control"
         ></input>
       </td>
       <td>
-        <select value={genreId} onChange={(e) => setGenreId(e.target.value)}>
+        <select
+          value={genreId}
+          onChange={(e) => setGenreId(e.target.value)}
+          className="form-select"
+        >
           {genres.map((genre) => (
             <option key={genre.id} value={genre.id}>
               {genre.name}
@@ -56,7 +61,9 @@ export default function AddMovieRow({ onAdd }) {
       </td>
       <td></td>
       <td>
-        <button onClick={postMovie}>Add</button>
+        <button onClick={postMovie} type="button" className="btn btn-primary">
+          Add
+        </button>
       </td>
     </tr>
   ) : null;
