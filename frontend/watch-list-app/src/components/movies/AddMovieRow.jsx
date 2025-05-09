@@ -29,7 +29,7 @@ export default function AddMovieRow({ onAdd }) {
     setGenreId(genres[0].id);
   }
 
-  return (
+  return genres.length !== 0 ? (
     <tr>
       <td>
         <input
@@ -53,5 +53,5 @@ export default function AddMovieRow({ onAdd }) {
         <button onClick={postMovie}>Add</button>
       </td>
     </tr>
-  );
+  ) : null;
 }
