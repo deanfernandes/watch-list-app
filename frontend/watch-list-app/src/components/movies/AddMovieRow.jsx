@@ -1,11 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { GenresContext } from "../../GenresContext";
 import { API_URL } from "../../config";
 
 export default function AddMovieRow({ onAdd }) {
   const genres = useContext(GenresContext);
   const [title, setTitle] = useState("");
-  const [genreId, setGenreId] = useState();
+  const [genreId, setGenreId] = useState(undefined);
+
+  useEffect(() => {
+    if (genres.length > 0 && !genreId) {
+      setGenreId(genres[0].id);
+    }
+  }, [genres]);
 
   function postMovie() {
     fetch(API_URL + "/movies", {
