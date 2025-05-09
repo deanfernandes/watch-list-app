@@ -101,6 +101,8 @@ export default function MovieRow({ movie, onUpdateDelete }) {
       </tr>
     )
   ) : (
-    <p>Loading...</p>
+    <tr>
+      <td>Loading...</td>
+    </tr>
   );
 }
