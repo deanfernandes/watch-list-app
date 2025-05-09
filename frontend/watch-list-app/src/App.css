@@ -1,4 +1,5 @@
-header {
+header,
+footer {
   background-color: yellow;
   padding: 10px 0 10px 0;
 }
@@ -8,12 +9,10 @@ header > h1 {
   text-transform: uppercase;
 }
 
-footer {
-  background-color: yellow;
-}
-
 footer > p {
   text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 footer > p::before {
@@ -45,4 +44,8 @@ footer {
 
 main {
   flex-grow: 1;
+}
+
+caption {
+  caption-side: top !important;
 }

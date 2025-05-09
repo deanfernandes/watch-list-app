@@ -21,7 +21,7 @@ export default function MoviesTable({
       <caption>Movies</caption>
       <thead>
         <tr>
-          <th>
+          <th className="center border">
             Title{" "}
             <button
               title={
@@ -34,8 +34,8 @@ export default function MoviesTable({
               {ascending ? "AZ⬇" : "ZA⬇"}
             </button>
           </th>
-          <th>Genre</th>
-          <th>Watched?</th>
+          <th className="center border">Genre</th>
+          <th className="center border">Watched?</th>
         </tr>
       </thead>
       <tbody>
