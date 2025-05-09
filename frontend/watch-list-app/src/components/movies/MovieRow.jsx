@@ -9,6 +9,7 @@ export default function MovieRow({ movie, onUpdateDelete }) {
   const [edit, setEdit] = useState(false);
   const [title, setTitle] = useState(movie.title);
   const [genreId, setGenreId] = useState(movie.genreId);
+  const [watched, setWatched] = useState(false);
 
   function deleteMovie(id) {
     fetch(API_URL + "/movies/" + id, {
@@ -31,6 +32,7 @@ export default function MovieRow({ movie, onUpdateDelete }) {
       body: JSON.stringify({
         title,
         genreId,
+        watched,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -63,7 +65,11 @@ export default function MovieRow({ movie, onUpdateDelete }) {
           </select>
         </td>
         <td>
-          <input type="checkbox" value="false"></input>
+          <input
+            type="checkbox"
+            checked={watched}
+            onChange={(e) => setWatched(e.target.checked)}
+          ></input>
         </td>
         <td>
           <button onClick={() => updateMovie(movie.id)}>Save</button>
@@ -74,6 +80,7 @@ export default function MovieRow({ movie, onUpdateDelete }) {
               setEdit(false);
               setTitle(movie.title);
               setGenreId(movie.genreId);
+              setWatched(movie.watched);
             }}
           >
             Cancel
